@@ -79,3 +79,5 @@ def test_as_string_content_query__url():
     my_url = URL(hostname=TEST_HOSTNAME, query=query)
     result = my_url.as_string()
     assert query in result
+
+# TODO: Test the order of URL attributes in string
