@@ -60,6 +60,7 @@ repos:
       rev: v0.9.14
       hooks:
           - id: pymarkdown
+            args: ["-d", "md030,md013", "scan"]
     - repo: https://github.com/regebro/pyroma
       rev: "4.2"
       hooks:
