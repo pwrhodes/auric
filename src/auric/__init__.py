@@ -77,9 +77,18 @@ class URL:  # dead: disable
 
     def as_string(self) -> str:  # dead: disable
         """Render the URL as a string."""
-        url = self.hostname
+        return self.convert_to_string()
+
+    def __str__(self) -> str:
+        """Render the URL as a string."""
+        return self.convert_to_string()
+
+    def convert_to_string(self) -> str:
+        """Convert the instance to a string representation."""
+        url: str = ""
         if self.protocol:
-            url = url + "://" + self.protocol
+            url = self.protocol + "://"
+        url = url + self.hostname
         if self.port:
             url = url + ":" + str(self.port)
         if self.path:
@@ -87,3 +96,5 @@ class URL:  # dead: disable
         if self.query:
             url = url + "?" + self.query
         return url
+
+    # TODO: add required dunder methods
