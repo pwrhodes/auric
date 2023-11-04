@@ -1,0 +1,14 @@
+max-line-length: 100
+strictness: high
+
+output-format: grouped
+test-warnings: true
+doc-warnings: true
+member-warnings: true
+
+pylint:
+    generated-members:
+        - sh
+
+pep8:
+    full: true
