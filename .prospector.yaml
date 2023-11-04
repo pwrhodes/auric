@@ -12,3 +12,7 @@ pylint:
 
 pep8:
     full: true
+
+pydocstyle:
+    disable:
+        - D203
