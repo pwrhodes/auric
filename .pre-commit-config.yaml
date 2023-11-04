@@ -1,0 +1,74 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.5.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: check-yaml
+  - id: check-json
+  - id: check-toml
+  - id: debug-statements
+  - id: detect-private-key
+  - id: mixed-line-ending
+  - id: name-tests-test
+  - id: requirements-txt-fixer
+  - id: check-byte-order-marker
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: "v1.6.1"
+  hooks:
+  - id: mypy
+    additional_dependencies:
+    - pydantic
+- repo: https://github.com/psf/black
+  rev: 23.10.1
+  hooks:
+  - id: black
+- repo: https://github.com/asottile/blacken-docs
+  rev: 1.16.0
+  hooks:
+  - id: blacken-docs
+- repo: https://github.com/asottile/yesqa
+  rev: v1.5.0
+  hooks:
+  - id: yesqa
+- repo: https://github.com/asottile/dead
+  rev: v1.5.2
+  hooks:
+  - id: dead
+    args: ["--exclude", '^.*\_fake\.py$']
+- repo: https://github.com/Yelp/detect-secrets
+  rev: v1.4.0
+  hooks:
+  - id: detect-secrets
+    args: ["--exclude-lines", "APPINSIGHTS_INSTRUMENTATIONKEY"]
+    exclude: package.lock.json
+- repo: https://github.com/twu/skjold
+  rev: v0.6.1
+  hooks:
+  - id: skjold
+- repo: https://github.com/pre-commit/mirrors-prettier
+  rev: "v3.0.3"
+  hooks:
+  - id: prettier
+    args: ["--tab-width", "4"]
+- repo: https://github.com/pre-commit/mirrors-isort
+  rev: v5.10.1
+  hooks:
+  - id: isort
+    args: ["--profile", "black", "--filter-files"]
+- repo: https://github.com/jackdewinter/pymarkdown
+  rev: v0.9.14
+  hooks:
+  - id: pymarkdown
+- repo: https://github.com/regebro/pyroma
+  rev: "4.2"
+  hooks:
+  - id: pyroma
+- repo: https://github.com/PyCQA/prospector
+  rev: v1.10.3
+  hooks:
+  - id: prospector
+    name: prospector (/src)
+    language: system
+    exclude: ^tests/
+    args: ["--profile", ".prospector.yaml"]
