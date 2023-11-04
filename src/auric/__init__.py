@@ -9,13 +9,16 @@ class URL:  # dead: disable
     @property
     def protocol(self) -> str:
         """Returns the protocol."""
-        return self._protocol
+        if self._protocol:
+            return self._protocol
+        return ""
 
     @protocol.setter
     def protocol(self, set_protocol) -> None:
         """Contains the protocol."""
-        if set_protocol not in PROTOCOLS:
-            raise ValueError("Invalid protocol provoded")
+        if set_protocol:
+            if set_protocol not in PROTOCOLS:
+                raise ValueError("Invalid protocol provoded")
         self._protocol = set_protocol
 
     @property
@@ -25,7 +28,7 @@ class URL:  # dead: disable
 
     @hostname.setter
     def hostname(self, set_hostname) -> None:
-        """Sets the protocol."""
+        """Sets the hostname."""
         self._hostname = set_hostname
 
     @property
@@ -42,7 +45,7 @@ class URL:  # dead: disable
 
     @property
     def path(self) -> str:
-        """Contains the hostname."""
+        """Contains the path."""
         if self._path:
             return self._path
         return ""
@@ -64,7 +67,7 @@ class URL:  # dead: disable
         """Sets the query."""
         self._query = set_query
 
-    def __init__(self, hostname, protocol="https", port=None, path=None, query=None):
+    def __init__(self, hostname, protocol=None, port=None, path=None, query=None):
         """Initialise the instance."""
         self.hostname = hostname
         self.protocol = protocol
@@ -74,9 +77,11 @@ class URL:  # dead: disable
 
     def as_string(self) -> str:  # dead: disable
         """Render the URL as a string."""
-        url = self.protocol + "://" + self.hostname
+        url = self.hostname
+        if self.protocol:
+            url = url + "://" + self.protocol
         if self.port:
-            url = url + ":" + self.port
+            url = url + ":" + str(self.port)
         if self.path:
             url = url + "/" + self.path
         if self.query:
