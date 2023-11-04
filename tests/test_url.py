@@ -7,7 +7,7 @@ from auric import URL
 
 TEST_HOSTNAME = "auric.test"
 
-TestInput = namedtuple("TestInput", ["input_value", "expected_result"])
+UrlInput = namedtuple("UrlInput", ["input_value", "expected_result"])
 
 
 def test_url():
@@ -25,9 +25,9 @@ def test_required_args__url():
 @pytest.mark.parametrize(
     "protocol",
     [
-        TestInput(input_value="https", expected_result=True),
-        TestInput(input_value="http", expected_result=True),
-        TestInput(input_value="test", expected_result=False),
+        UrlInput(input_value="https", expected_result=True),
+        UrlInput(input_value="http", expected_result=True),
+        UrlInput(input_value="test", expected_result=False),
     ],
 )
 def test_protocols__url(protocol):
