@@ -10,7 +10,6 @@ repos:
           - id: debug-statements
           - id: detect-private-key
           - id: mixed-line-ending
-          - id: name-tests-test
           - id: requirements-txt-fixer
           - id: check-byte-order-marker
     - repo: https://github.com/pre-commit/mirrors-mypy
@@ -71,5 +70,4 @@ repos:
           - id: prospector
             name: prospector (/src)
             language: system
-            exclude: ^tests/
             args: ["--profile", ".prospector.yaml"]
