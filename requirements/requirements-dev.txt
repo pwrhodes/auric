@@ -1,0 +1,8 @@
+mypy
+pre-commit
+prospector
+pycodestyle
+pydocstyle
+pyflakes
+pylint
+pytest
