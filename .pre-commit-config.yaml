@@ -71,5 +71,4 @@ repos:
           - id: prospector
             name: prospector (/src)
             language: system
-            exclude: ^tests/
             args: ["--profile", ".prospector.yaml"]
