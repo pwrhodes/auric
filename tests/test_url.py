@@ -52,6 +52,12 @@ def test_as_string__url():
     result = my_url.as_string()
     assert isinstance(result, str)
 
+def test_repr__url():
+    """Test as_string result type."""
+    my_url = URL(hostname=TEST_HOSTNAME)
+    result = repr(my_url)
+    assert isinstance(result, str)
+
 
 def test_string_consistency__url():
     """Test as_string result type."""
@@ -86,7 +92,7 @@ def test_as_string_content_port__url():
 
 def test_as_string_content_path__url():
     """Test contents of url as_string with protocol argument."""
-    path = "test"
+    path = "test=yes"
     my_url = URL(hostname=TEST_HOSTNAME, path=path)
     result = my_url.as_string()
     assert path in result
@@ -94,10 +100,18 @@ def test_as_string_content_path__url():
 
 def test_as_string_content_query__url():
     """Test contents of url as_string with protocol argument."""
-    query = "test"
+    query = "test=yes"
     my_url = URL(hostname=TEST_HOSTNAME, query=query)
     result = my_url.as_string()
     assert query in result
 
 
-# TODO: Test the order of URL attributes in string
+def test_equal__url():
+    """Test contents of url as_string with protocol argument."""
+    query = "test=yes"
+    my_url = URL(hostname=TEST_HOSTNAME, query=query)
+    my_url_2 = URL(hostname=TEST_HOSTNAME, query=query)
+    assert my_url == my_url_2
+
+
+# TODO: Test the order of URL attributes in string representation

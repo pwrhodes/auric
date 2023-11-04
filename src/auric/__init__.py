@@ -3,7 +3,7 @@ from auric.valid_values import PROTOCOLS
 
 
 # pylint: disable=too-many-arguments,too-many-instance-attributes
-class URL:  # dead: disable
+class URL:
     """Contains a URL and all it's components."""
 
     @property
@@ -82,6 +82,24 @@ class URL:  # dead: disable
     def __str__(self) -> str:
         """Render the URL as a string."""
         return self.convert_to_string()
+
+    def __repr__(self) -> str:
+        """Render the URL as a string."""
+        return self.convert_to_string()
+
+    def __eq__(self, other) -> bool:
+        """Return equality."""
+        if isinstance(other, URL):
+            self_values = self.protocol, self.hostname, self.port, self.path, self.query
+            other_values = (
+                other.protocol,
+                other.hostname,
+                other.port,
+                other.path,
+                other.query,
+            )
+            return self_values == other_values
+        return NotImplemented
 
     def convert_to_string(self) -> str:
         """Convert the instance to a string representation."""
